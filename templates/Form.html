@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Send Email</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .Formcontainer{
+            width: 98%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        h2{
+            font-size: large;
+            margin: 5%;
+        }
+        .Form{
+            width:90%;
+            margin: 5%;
+        }
+        input{
+            width:100%;
+            height:40px;
+            font-size: large;
+            margin-bottom: 2%;
+            padding: 2%;
+        } 
+        label{
+            font-size:20px;
+        }
+        button{
+            height:40px;
+            width: 100%;
+            background-color: green;
+            border: none;
+            color: white;
+              font-size: large;
+        }
+    </style>
+</head>
+<body>
+    <section class="Formcontainer">
+        <h2>SEND EMAIL TO THE COMPANY</h2>
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p style="color:green">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <form method="post" class="Form">
+        <label>Recipient Email Id:</label>
+        <input type="email" name="recipient" required placeholder="Enter Emil Id"><br><br>
+        <label>Subject Of The Email:</label>
+        <input type="text" name="subject" required placeholder="Subject Of The Email"><br><br>
+        <button type="submit">Send Email</button>
+    </form>
+    </section>
+</body>
+</html>
